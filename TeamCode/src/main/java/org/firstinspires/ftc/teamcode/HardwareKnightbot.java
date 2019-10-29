@@ -22,10 +22,8 @@ public class HardwareKnightbot
     public DcMotor  arm         = null;
     public DcMotor  liftL       = null;
     public DcMotor  liftR       = null;
-    public Servo    leftClaw1   = null;
-    public Servo    leftClaw2   = null;
-    public Servo    rightClaw1  = null;
-    public Servo    rightClaw2  = null;
+    public Servo    leftClaw    = null;
+    public Servo    rightClaw   = null;
 
     // local OpMode members.
     HardwareMap hwMap           =  null;
@@ -78,10 +76,8 @@ public class HardwareKnightbot
         liftR.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         // Define and initialize ALL installed servos.
-        leftClaw1  = hwMap.get(Servo.class, "leftClaw1");
-        leftClaw2  = hwMap.get(Servo.class, "leftClaw2");
-        rightClaw1 = hwMap.get(Servo.class, "rightClaw1");
-        rightClaw2 = hwMap.get(Servo.class, "rightClaw2");
+        leftClaw  = hwMap.get(Servo.class, "leftClaw");
+        rightClaw = hwMap.get(Servo.class, "rightClaw");
     }
  }
 
