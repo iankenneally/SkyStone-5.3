@@ -29,7 +29,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  */
 
 @Autonomous(name="Knightbot: Auto Drive By Time", group="Knightbot")
-//@Dis frontRighted
+//@Disabled
 public class KnightbotAutoDrive extends LinearOpMode {
 
     /* Declare OpMode members. */
