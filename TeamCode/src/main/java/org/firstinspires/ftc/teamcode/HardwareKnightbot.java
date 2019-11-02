@@ -22,8 +22,8 @@ public class HardwareKnightbot
     public DcMotor  arm         = null;
     public DcMotor  liftL       = null;
     public DcMotor  liftR       = null;
-    public Servo    leftClaw    = null;
-    public Servo    rightClaw   = null;
+   // public Servo    leftClaw    = null;
+    //public Servo    rightClaw   = null;
 
     // local OpMode members.
     HardwareMap hwMap           =  null;
@@ -48,14 +48,23 @@ public class HardwareKnightbot
         liftL      = hwMap.get(DcMotor.class, "liftL");
         liftR      = hwMap.get(DcMotor.class, "liftR");
 
+        frontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        frontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        backLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        backRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        liftL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        liftR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+
         // set motor directions
         frontLeft.setDirection(DcMotor.Direction.FORWARD);
         backLeft.setDirection(DcMotor.Direction.FORWARD);
         frontRight.setDirection(DcMotor.Direction.REVERSE);
         backRight.setDirection(DcMotor.Direction.REVERSE);
-        arm.setDirection(DcMotor.Direction.FORWARD);
-        liftL.setDirection(DcMotor.Direction.FORWARD);
-        liftR.setDirection(DcMotor.Direction.REVERSE);
+        arm.setDirection(DcMotor.Direction.REVERSE);
+        liftL.setDirection(DcMotor.Direction.REVERSE);
+        liftR.setDirection(DcMotor.Direction.FORWARD);
 
         // Set all motors to zero power
         frontLeft.setPower(0);
@@ -76,8 +85,8 @@ public class HardwareKnightbot
         liftR.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         // Define and initialize ALL installed servos.
-        leftClaw  = hwMap.get(Servo.class, "leftClaw");
-        rightClaw = hwMap.get(Servo.class, "rightClaw");
+        //leftClaw  = hwMap.get(Servo.class, "leftClaw");
+        //rightClaw = hwMap.get(Servo.class, "rightClaw");
     }
  }
 

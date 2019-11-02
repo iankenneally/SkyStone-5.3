@@ -40,8 +40,8 @@ public class KnightbotTeleop extends LinearOpMode {
 
             // set drive power levels to power variables (very nice thomas)
             FL = gamepad1.left_stick_y-gamepad1.left_stick_x;
-            FR = gamepad1.left_stick_y+gamepad1.left_stick_x;
-            BL = gamepad1.right_stick_y+gamepad1.left_stick_x;
+            FR = gamepad1.right_stick_y+gamepad1.left_stick_x;
+            BL = gamepad1.left_stick_y+gamepad1.left_stick_x;
             BR = gamepad1.right_stick_y-gamepad1.left_stick_x;
 
             // clip power variables to be within -1 and 1 (thomas)
@@ -67,22 +67,22 @@ public class KnightbotTeleop extends LinearOpMode {
             robot.arm.setPower(gamepad2.left_stick_y/2);
 
             // Open and close claw if X pressed
-            if(gamepad2.x){
-                robot.leftClaw.setPosition(0.4);
-                robot.rightClaw.setPosition(0.4);
-            }else{
-                robot.leftClaw.setPosition(0);
-                robot.rightClaw.setPosition(0);
-            }
+            //if(gamepad2.x){
+            //    robot.leftClaw.setPosition(0.4);
+             //   robot.rightClaw.setPosition(0.4);
+            //}else{
+            //    robot.leftClaw.setPosition(0);
+            //    robot.rightClaw.setPosition(0);
+            //}
 
             // lift arm up and down
             robot.liftL.setPower(gamepad2.right_stick_y);
-            robot.liftR.setPower(gamepad2.right_stick_y);
+            robot.liftR.setPower(gamepad2.right_stick_y*.8);
 
             // Send telemetry message to signify robot running;
-            telemetry.addData("left1",  "%.2f", robot.leftClaw);
-            telemetry.addData("right1", "%.2f", robot.rightClaw);
-            telemetry.update();
+            //telemetry.addData("left1",  "%.2f", robot.leftClaw);
+            //telemetry.addData("right1", "%.2f", robot.rightClaw);
+            //telemetry.update();
 
             // Pace this loop so jaw action is reasonable speed.
             sleep(50);
