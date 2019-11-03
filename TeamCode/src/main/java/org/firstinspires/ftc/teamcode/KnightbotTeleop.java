@@ -15,7 +15,6 @@ import com.qualcomm.robotcore.util.Range;
 //@Disabled
 public class KnightbotTeleop extends LinearOpMode {
 
-    // Declare OpMode members.
     HardwareKnightbot robot = new HardwareKnightbot();   // Use Knightbot's hardware
     double closedPosition = .4;
 
@@ -26,17 +25,13 @@ public class KnightbotTeleop extends LinearOpMode {
         double BL;
         double BR;
 
-        // Initialize hardware variables
         robot.init(hardwareMap);
 
-        // Send telemetry message to signify robot waiting
         telemetry.addData("Say", "Hello Driver");
         telemetry.update();
 
-        // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
 
             // set drive power levels to power variables (very nice thomas)
@@ -45,29 +40,24 @@ public class KnightbotTeleop extends LinearOpMode {
             BL = gamepad1.left_stick_y+gamepad1.left_stick_x;
             BR = gamepad1.right_stick_y-gamepad1.left_stick_x;
 
-            // clip power variables to be within -1 and 1 (thomas)
             FL = Range.clip(FL, -1, 1);
             FR = Range.clip(FR, -1, 1);
             BL = Range.clip(BL, -1, 1);
             BR = Range.clip(BR, -1, 1);
 
-            // Output the safe vales to the motor drives.
             robot.frontLeft.setPower(FL);
             robot.frontRight.setPower(FR);
             robot.backLeft.setPower(BL);
             robot.backRight.setPower(BR);
 
-            // send wheel telemetry data
             telemetry.addData("Front Left", robot.frontLeft.getPower());
             telemetry.addData("Front Right", robot.frontRight.getPower());
             telemetry.addData("Back Left", robot.backLeft.getPower());
             telemetry.addData("Back Right", robot.backRight.getPower());
             telemetry.update();
 
-            // raise and lower arm based on gamepad 2 left stick
             robot.arm.setPower(gamepad2.left_stick_y/2);
 
-            // Open and close claw if X pressed
             if(gamepad2.x){
                 robot.leftClaw.setPosition(robot.OPEN_SERVO + closedPosition);
                 robot.rightClaw.setPosition(robot.OPEN_SERVO + closedPosition);
@@ -76,7 +66,6 @@ public class KnightbotTeleop extends LinearOpMode {
                 robot.rightClaw.setPosition(robot.OPEN_SERVO);
             }
 
-            // lift arm up and down
             robot.liftL.setPower(gamepad2.right_stick_y);
             robot.liftR.setPower(gamepad2.right_stick_y*.8);
 
