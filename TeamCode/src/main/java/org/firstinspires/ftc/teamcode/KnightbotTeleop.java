@@ -17,6 +17,7 @@ public class KnightbotTeleop extends LinearOpMode {
 
     // Declare OpMode members.
     HardwareKnightbot robot = new HardwareKnightbot();   // Use Knightbot's hardware
+    double closedPosition = .4;
 
     @Override
     public void runOpMode() {
@@ -67,13 +68,13 @@ public class KnightbotTeleop extends LinearOpMode {
             robot.arm.setPower(gamepad2.left_stick_y/2);
 
             // Open and close claw if X pressed
-            //if(gamepad2.x){
-            //    robot.leftClaw.setPosition(0.4);
-             //   robot.rightClaw.setPosition(0.4);
-            //}else{
-            //    robot.leftClaw.setPosition(0);
-            //    robot.rightClaw.setPosition(0);
-            //}
+            if(gamepad2.x){
+                robot.leftClaw.setPosition(robot.OPEN_SERVO + closedPosition);
+                robot.rightClaw.setPosition(robot.OPEN_SERVO + closedPosition);
+            }else{
+                robot.leftClaw.setPosition(robot.OPEN_SERVO);
+                robot.rightClaw.setPosition(robot.OPEN_SERVO);
+            }
 
             // lift arm up and down
             robot.liftL.setPower(gamepad2.right_stick_y);
