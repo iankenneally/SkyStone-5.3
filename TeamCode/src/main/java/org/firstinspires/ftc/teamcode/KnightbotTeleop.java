@@ -59,11 +59,11 @@ public class KnightbotTeleop extends LinearOpMode {
             robot.arm.setPower(gamepad2.left_stick_y/2);
 
             if(gamepad2.x){
-                robot.leftClaw.setPosition(robot.OPEN_SERVO + closedPosition);
-                robot.rightClaw.setPosition(robot.OPEN_SERVO + closedPosition);
+                robot.leftClaw.setPosition(.4);
+                robot.rightClaw.setPosition(.1);
             }else{
-                robot.leftClaw.setPosition(robot.OPEN_SERVO);
-                robot.rightClaw.setPosition(robot.OPEN_SERVO);
+                robot.leftClaw.setPosition(1);
+                robot.rightClaw.setPosition(0);
             }
 
             robot.liftL.setPower(gamepad2.right_stick_y);

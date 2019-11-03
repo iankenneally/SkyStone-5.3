@@ -27,7 +27,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Remove or comment out the @Dis frontRighted line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Knightbot: Auto Drive By Time", group="Knightbot")
+@Autonomous(name="Knightbot: Auto Spin", group="Knightbot")
 //@Disabled
 public class KnightbotAutoSpin extends LinearOpMode {
 

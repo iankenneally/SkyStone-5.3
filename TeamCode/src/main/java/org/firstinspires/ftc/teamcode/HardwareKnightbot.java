@@ -22,7 +22,7 @@ public class HardwareKnightbot {
     public Servo    leftClaw    = null;
     public Servo    rightClaw   = null;
 
-    public static final double OPEN_SERVO =  0;
+    //public static final double OPEN_SERVO =  0;
 
     HardwareMap hwMap           =  null;
     private ElapsedTime period  = new ElapsedTime();
@@ -76,8 +76,8 @@ public class HardwareKnightbot {
 
         leftClaw  = hwMap.get(Servo.class, "leftClaw");
         rightClaw = hwMap.get(Servo.class, "rightClaw");
-        rightClaw.setPosition(OPEN_SERVO);
-        leftClaw.setPosition(OPEN_SERVO);
+        rightClaw.setPosition(0);
+        leftClaw.setPosition(1);
     }
  }
 
