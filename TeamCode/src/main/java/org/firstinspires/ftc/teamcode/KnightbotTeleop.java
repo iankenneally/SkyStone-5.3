@@ -40,10 +40,10 @@ public class KnightbotTeleop extends LinearOpMode {
             BL = gamepad1.left_stick_y+gamepad1.left_stick_x;
             BR = gamepad1.right_stick_y-gamepad1.left_stick_x;
 
-            FL = Range.clip(FL, -1, 1);
-            FR = Range.clip(FR, -1, 1);
-            BL = Range.clip(BL, -1, 1);
-            BR = Range.clip(BR, -1, 1);
+            FL = Range.clip(FL, -robot.FL_POWER, robot.FL_POWER);
+            FR = Range.clip(FR, -robot.FR_POWER, robot.FR_POWER);
+            BL = Range.clip(BL, -robot.BL_POWER, robot.BL_POWER);
+            BR = Range.clip(BR, -robot.BR_POWER, robot.BR_POWER);
 
             robot.frontLeft.setPower(FL);
             robot.frontRight.setPower(FR);
@@ -60,7 +60,7 @@ public class KnightbotTeleop extends LinearOpMode {
 
             if(gamepad2.x){
                 robot.leftClaw.setPosition(.4);
-                robot.rightClaw.setPosition(.1);
+                robot.rightClaw.setPosition(1);
             }else{
                 robot.leftClaw.setPosition(1);
                 robot.rightClaw.setPosition(0);
@@ -68,11 +68,6 @@ public class KnightbotTeleop extends LinearOpMode {
 
             robot.liftL.setPower(gamepad2.right_stick_y);
             robot.liftR.setPower(gamepad2.right_stick_y*.8);
-
-            // Send telemetry message to signify robot running;
-            //telemetry.addData("left1",  "%.2f", robot.leftClaw);
-            //telemetry.addData("right1", "%.2f", robot.rightClaw);
-            //telemetry.update();
 
             // Pace this loop so jaw action is reasonable speed.
             sleep(50);

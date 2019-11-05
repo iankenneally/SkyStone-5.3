@@ -23,7 +23,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  *
  *  The code is written in a simple form with no optimizations.
  *  However, there are several ways that this type of sequence could be streamlined,
- *
+ *x
  * Use Android Studios to Copy this Class, and Paste it into your team's code folder with a new name.
  * Remove or comment out the @Dis frontRighted line to add this opmode to the Driver Station OpMode list
  */
@@ -43,84 +43,81 @@ public class KnightbotAutoDrive extends LinearOpMode {
     @Override
     public void runOpMode() {
 
-        /*
-         * Initialize the drive system vari frontRightes.
-         * The init() method of the hardware class does all the work here
-         */
         robot.init(hardwareMap);
 
-        // Send telemetry message to signify robot waiting;
-        telemetry.addData("Status", "Ready to run");    //
+        telemetry.addData("Status", "Ready to run");
         telemetry.update();
 
-        // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        // Step through each leg of the path, ensuring that the Auto mode has not been stopped along the way
-
-        // Step 1:  Drive forward for 3 seconds
-        forward(3000);
-        stopMotors();
-        //raise and lower arm to grab foundation
         robot.arm.setPower(1);
-        sleep(1000);
-        robot.arm.setPower(-1);
-        sleep(1000);
+        sleep(500);
         robot.arm.setPower(0);
 
-        //backward 3 seconds
-        backward(3000);
-        paralellRight(3000);
+        forward(700);
         stopMotors();
-        
-        sleep(1000);
+
+        robot.arm.setPower(-1);
+        sleep(490);
+        robot.arm.setPower(0);
+
+        backward(700);
+        stopMotors();
+
+        robot.arm.setPower(1);
+        sleep(500);
+        robot.arm.setPower(-1);
+        sleep(500);
+
+        parallelRight(1000);
+        stopMotors();
     }
 
     private void forward(int time) {
-            robot.frontLeft.setPower(1.0);
-            robot.frontRight.setPower(1.0);
-            robot.backLeft.setPower(1.0);
-            robot.backRight.setPower(1.0);
+            robot.frontLeft.setPower(-robot.FL_POWER);
+            robot.frontRight.setPower(-robot.FR_POWER);
+            robot.backLeft.setPower(-robot.BL_POWER);
+            robot.backRight.setPower(-robot.BR_POWER);
             sleep(time);
         }
 
     private void backward(int time) {
-            robot.frontLeft.setPower(-1.0);
-            robot.frontRight.setPower(-1.0);
-            robot.backLeft.setPower(-1.0);
-            robot.backRight.setPower(-1.0);
+            robot.frontLeft.setPower(robot.FL_POWER);
+            robot.frontRight.setPower(robot.FR_POWER);
+            robot.backLeft.setPower(robot.BL_POWER);
+            robot.backRight.setPower(robot.BR_POWER);
             sleep(time);
         } 
 
         private void turnLeft(int time) {
-            robot.frontLeft.setPower(-1.0);
-            robot.frontRight.setPower(-1.0);
-            robot.backLeft.setPower(1.0);
-            robot.backRight.setPower(1.0);
+            robot.frontLeft.setPower(robot.FL_POWER);
+            robot.frontRight.setPower(-robot.FR_POWER);
+            robot.backLeft.setPower(robot.BL_POWER);
+            robot.backRight.setPower(-robot.BR_POWER);
             sleep(time);
         }
 
         private void turnRight(int time) {
-            robot.frontLeft.setPower(1.0);
-            robot.frontRight.setPower(1.0);
-            robot.backLeft.setPower(-1.0);
-            robot.backRight.setPower(-1.0);
+            robot.frontLeft.setPower(-robot.FL_POWER);
+            robot.frontRight.setPower(robot.FR_POWER);
+            robot.backLeft.setPower(-robot.BL_POWER);
+            robot.backRight.setPower(robot.BR_POWER);
             sleep(time);
         }
 
-        private void paralellLeft(int time) {
-            robot.frontLeft.setPower(-1.0);
-            robot.frontRight.setPower(1.0);
-            robot.backLeft.setPower(1.0);
-            robot.backRight.setPower(-1.0);
+        private void parallelLeft(int time) {
+            robot.frontLeft.setPower(robot.FL_POWER);
+            robot.frontRight.setPower(-robot.FR_POWER);
+            robot.backLeft.setPower(-robot.BL_POWER);
+            robot.backRight.setPower(robot.BR_POWER);
             sleep(time);
         }
 
-        private void paralellRight(int time) {
-            robot.frontLeft.setPower(1.0);
-            robot.frontRight.setPower(-1.0);
-            robot.backLeft.setPower(-1.0);
-            robot.backRight.setPower(1.0);
+        private void parallelRight(int time) {
+            robot.frontLeft.setPower(-robot.FL_POWER);
+            robot.frontRight.setPower(robot.FR_POWER);
+            robot.backLeft.setPower(robot.BL_POWER);
+            robot.backRight.setPower(-robot.BR_POWER);
             sleep(time);
         }
 

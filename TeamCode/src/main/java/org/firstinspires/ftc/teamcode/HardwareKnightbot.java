@@ -12,6 +12,11 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class HardwareKnightbot {
 
+    public double FL_POWER = 1;
+    public double FR_POWER = 1;
+    public double BL_POWER = 1;
+    public double BR_POWER = 1;
+
     public DcMotor  frontLeft   = null;
     public DcMotor  frontRight  = null;
     public DcMotor  backLeft    = null;
