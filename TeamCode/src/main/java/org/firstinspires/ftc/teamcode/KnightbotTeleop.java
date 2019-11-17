@@ -16,7 +16,6 @@ import com.qualcomm.robotcore.util.Range;
 public class KnightbotTeleop extends LinearOpMode {
 
     HardwareKnightbot robot = new HardwareKnightbot();   // Use Knightbot's hardware
-    double closedPosition = .4;
 
     @Override
     public void runOpMode() {
@@ -24,6 +23,7 @@ public class KnightbotTeleop extends LinearOpMode {
         double FR;
         double BL;
         double BR;
+        int    clawReverse = 0;
 
         robot.init(hardwareMap);
 
@@ -58,18 +58,27 @@ public class KnightbotTeleop extends LinearOpMode {
 
             robot.arm.setPower(gamepad2.left_stick_y/2);
 
-            if(gamepad2.x){
-                robot.leftClaw.setPosition(.4);
-                robot.rightClaw.setPosition(1);
-            }else{
-                robot.leftClaw.setPosition(1);
-                robot.rightClaw.setPosition(0);
+            if(gamepad2.y){
+                clawReverse++;
+            }
+
+            if(clawReverse>=1) {
+                if (gamepad2.x) {
+                    robot.leftClaw.setPosition(1);
+                    robot.rightClaw.setPosition(0);
+                    //robot.leftClaw.setPosition(.4);
+                    //robot.rightClaw.setPosition(1);
+                } else {
+                    robot.leftClaw.setPosition(.4);
+                    robot.rightClaw.setPosition(1);
+                    //robot.leftClaw.setPosition(1);
+                    //robot.rightClaw.setPosition(0);
+                }
             }
 
             robot.liftL.setPower(gamepad2.right_stick_y);
             robot.liftR.setPower(gamepad2.right_stick_y*.8);
 
-            // Pace this loop so jaw action is reasonable speed.
             sleep(50);
         }
     }

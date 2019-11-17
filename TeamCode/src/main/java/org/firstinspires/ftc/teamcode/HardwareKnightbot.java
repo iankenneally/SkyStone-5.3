@@ -16,6 +16,7 @@ public class HardwareKnightbot {
     public double FR_POWER = 1;
     public double BL_POWER = 1;
     public double BR_POWER = 1;
+    public long   SERVO_DELAY = 0;
 
     public DcMotor  frontLeft   = null;
     public DcMotor  frontRight  = null;
@@ -59,9 +60,9 @@ public class HardwareKnightbot {
         backLeft.setDirection(DcMotor.Direction.FORWARD);
         frontRight.setDirection(DcMotor.Direction.REVERSE);
         backRight.setDirection(DcMotor.Direction.REVERSE);
-        arm.setDirection(DcMotor.Direction.REVERSE);
-        liftL.setDirection(DcMotor.Direction.REVERSE);
-        liftR.setDirection(DcMotor.Direction.FORWARD);
+        arm.setDirection(DcMotor.Direction.FORWARD);
+        liftL.setDirection(DcMotor.Direction.FORWARD);
+        liftR.setDirection(DcMotor.Direction.REVERSE);
 
         frontLeft.setPower(0);
         frontRight.setPower(0);
