@@ -55,6 +55,7 @@ public class RedFullAuto extends LinearOpMode {
             robot.backLeft.setPower(-robot.BL_POWER);
             robot.backRight.setPower(-robot.BR_POWER);
             sleep(time);
+            stopMotors();
         }
 
     private void backward(int time) {
@@ -63,6 +64,7 @@ public class RedFullAuto extends LinearOpMode {
             robot.backLeft.setPower(robot.BL_POWER);
             robot.backRight.setPower(robot.BR_POWER);
             sleep(time);
+            stopMotors();
         } 
 
         private void turnLeft(int time) {
@@ -71,6 +73,7 @@ public class RedFullAuto extends LinearOpMode {
             robot.backLeft.setPower(robot.BL_POWER);
             robot.backRight.setPower(-robot.BR_POWER);
             sleep(time);
+            stopMotors();
         }
 
         private void turnRight(int time) {
@@ -79,6 +82,7 @@ public class RedFullAuto extends LinearOpMode {
             robot.backLeft.setPower(-robot.BL_POWER);
             robot.backRight.setPower(robot.BR_POWER);
             sleep(time);
+            stopMotors();
         }
 
         private void parallelLeft(int time) {
@@ -87,6 +91,7 @@ public class RedFullAuto extends LinearOpMode {
             robot.backLeft.setPower(-robot.BL_POWER);
             robot.backRight.setPower(robot.BR_POWER);
             sleep(time);
+            stopMotors();
         }
 
         private void parallelRight(int time) {
@@ -95,6 +100,7 @@ public class RedFullAuto extends LinearOpMode {
             robot.backLeft.setPower(robot.BL_POWER);
             robot.backRight.setPower(-robot.BR_POWER);
             sleep(time);
+            stopMotors();
         }
 
         private void stopMotors() {
