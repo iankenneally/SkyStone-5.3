@@ -62,6 +62,8 @@ public class KnightbotTeleop extends LinearOpMode {
                 clawReverse++;
             }
 
+            clawReverse = Range.clip(clawReverse, 0, 1);
+
             if(clawReverse>=1) {
                 if (gamepad2.x) {
                     robot.leftClaw.setPosition(1);
@@ -75,6 +77,21 @@ public class KnightbotTeleop extends LinearOpMode {
                     //robot.rightClaw.setPosition(0);
                 }
             }
+
+                if (gamepad1.left_bumper) {
+                    robot.FL_POWER = .2;
+                    robot.FR_POWER = .2;
+                    robot.BL_POWER = .2;
+                    robot.BR_POWER = .2;
+                }
+
+                if (!gamepad1.left_bumper) {
+                    robot.FL_POWER = 1;
+                    robot.FR_POWER = 1;
+                    robot.BL_POWER = 1;
+                    robot.BR_POWER = 1;
+                }
+
 
             robot.liftL.setPower(gamepad2.right_stick_y);
             robot.liftR.setPower(gamepad2.right_stick_y*.8);

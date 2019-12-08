@@ -1,13 +1,12 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="blue full auto", group="Knightbot")
+@Autonomous(name="red full auto", group="Knightbot")
 //@Disabled
-public class BlueFullAuto extends LinearOpMode {
+public class RedUp extends LinearOpMode {
 
     HardwareKnightbot         robot   = new HardwareKnightbot();   // Use a Knightbot's hardware
     private ElapsedTime     runtime = new ElapsedTime();
@@ -47,7 +46,8 @@ public class BlueFullAuto extends LinearOpMode {
         sleep(1000);
 
         robot.arm.setPower(-.8);
-        sleep(200);
+        sleep(500);
+        robot.arm.setPower(-.2);
         stopMotors();
 
         sleep(1000);
@@ -59,7 +59,7 @@ public class BlueFullAuto extends LinearOpMode {
         sleep(10);
         robot.arm.setPower(0);
         sleep(1000);
-        parallelRight(1300);
+        parallelLeft(1300);
         stopMotors();
     }
 

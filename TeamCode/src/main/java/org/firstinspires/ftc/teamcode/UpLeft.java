@@ -21,7 +21,7 @@ public class UpLeft extends LinearOpMode {
         telemetry.update();
 
         waitForStart();
-        forward(1000);
+        forward(700);
         parallelLeft(1000);
         stopMotors();
 
